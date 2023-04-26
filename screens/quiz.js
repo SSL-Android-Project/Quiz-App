@@ -3,7 +3,12 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const Quiz = ({ navigation }) => {
+const Quiz = ({ route, navigation }) => {
+
+  const { type } = route.params;
+
+  console.log(type);
+
   const [questions, setQuestions] = useState();
   const [ques, setQues] = useState(0);
   const [options, setOptions] = useState([])
@@ -11,13 +16,16 @@ const Quiz = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false)
 
   const getQuiz = async () => {
+
     setIsLoading(true)
-    const url = 'https://opentdb.com/api.php?amount=10&category=18&type=multiple&encode=url3986';
+    // const url = 'https://opentdb.com/api.php?amount=10&category=18&type=multiple&encode=url3986';
+    const url = `http://localhost:5000/${type}`;
     const res = await fetch(url);
     const data = await res.json();
     setQuestions(data.results);
     setOptions(generateOptionsAndShuffle(data.results[0]))
     setIsLoading(false)
+
   };
 
   useEffect(() => {

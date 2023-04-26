@@ -1,8 +1,8 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Title from '../components/title';
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Title titleText='QUIZ' />
@@ -14,7 +14,7 @@ const Home = ({navigation}) => {
         />
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Quiz')}
+        onPress={() => navigation.navigate('Select')}
         style={styles.button}>
         <Text style={styles.buttonText}>Start</Text>
       </TouchableOpacity>
